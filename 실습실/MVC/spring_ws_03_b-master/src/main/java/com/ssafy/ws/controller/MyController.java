@@ -92,7 +92,7 @@ public class MyController {
     // Q2. "/about"으로 POST 요청이 오면 "/test2.jsp"로 리다이렉트하는 메서드
     @RequestMapping(value="/about", method = RequestMethod.POST)
     public String about() {
-        return "redirect:/test2";
+        return "redirect:/test2.jsp"; // 실제 파일로 직접 리다이렉트
     }
 
     // Q3. articleId라는 경로 변수를 사용하여 "article" 뷰를 반환하는 메서드
@@ -124,10 +124,19 @@ public class MyController {
     }
 
     // Q6. category와 query라는 변수를 사용하여 "searchResults" 뷰를 반환하는 메서드
-    @RequestMapping(value="/search")
+    // URL: /search/book?query=Spring 일 
+    @RequestMapping("/search/{category}")
     public String search(@PathVariable String category, @RequestParam String query, Model model) {
         model.addAttribute("query", query);
         model.addAttribute("category", category);
         return "searchResults";
     }
+    
+//    URL: /search?category=book&query=spring 일 땐 
+//    @RequestMapping("/search")
+//    public String search(@RequestParam String category, @RequestParam String query, Model model){
+//        model.addAttribute("query", query);
+//        model.addAttribute("category", category);
+//        return "searchResults";
+//    }
 }
