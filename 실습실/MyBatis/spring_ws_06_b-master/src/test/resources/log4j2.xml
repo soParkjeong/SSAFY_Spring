@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <!-- 콘솔과 같은 출력 대상을 정의 -->
+    <Appenders>
+        <!-- 콘솔 출력 설정 -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- 출력 패턴 설정 -->
+            <PatternLayout pattern="%-5p: %c - %m%n"/>
+        </Console>
+    </Appenders>
+    
+    <!-- 로거 설정 -->
+    <Loggers>
+        <!-- 애플리케이션 로거 -->
+        <!-- additivty="false" : 이벤트가 상위 로거로 전파되지 않도록 설정 -->
+        <Logger name="com.ssafy.ws" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        
+        <!-- 3rdparty 로거 -->
+        <Logger name="org.springframework.core" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        
+        <Logger name="org.springframework.beans" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        
+        <Logger name="org.springframework.context" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        
+        <Logger name="org.springframework.web" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        
+        <!-- 루트 로거 설정 -->
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
